@@ -10,8 +10,12 @@
   <body>
     <div class="max-w-screen-xl mx-auto">
       <!-- header -->
-      <header class="px-7 border-b flex justify-between items-center">
-        <a class="uppercase font-bold text-purple-800" href="#">bebe</a>
+      <header class="px-2 border-b flex justify-between items-center">
+        <a class="uppercase font-bold text-purple-800" href="#"
+          >bebe.<span class="text-gray-500 font-mono italic lowercase"
+            >press</span
+          ></a
+        >
         <nav class="flex items-center">
           <ul class="text-gray-500 font-semibold flex flex-row mr-6">
             <li>
@@ -108,13 +112,12 @@
           </a>
 
           <a
-            class="bg-violet-700 h-96 mb-4 relative rounded inline-block overflow-hidden w-1/3"
+            class="bg-gradient-to-tr from-red-500 to-purple-400 h-96 mb-4 relative rounded inline-block overflow-hidden w-1/3"
             href="#"
           >
             <div class="p-4 absolute bottom-0 left-0 z-10">
               <h2 class="text-4xl font-bold text-gray-200 leading-tight">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem
-                asperiores magni impedit maxime!
+                Autem asperiores magni impedit maxime!
               </h2>
             </div>
           </a>
@@ -155,29 +158,89 @@
               </ul>
             </div>
           </div>
+          <div class="w-1/3">
+            <!-- subcribe -->
+            <div class="my-5 px-2">
+              <h5 class="font-bold uppercase text-lg text-gray-700 mb-2">
+                Subcribe
+              </h5>
 
-          <!-- subcribe -->
-          <div class="my-5 px-2 w-1/3">
-            <h5 class="font-bold uppercase text-lg text-gray-700 mb-2">
-              Subcribe
-            </h5>
+              <p class="text-gray-600 mb-2">
+                Subcribe to our newsletter and stay up to date with the latest
+                news and offers.
+              </p>
 
-            <p class="text-gray-600 mb-2">
-              Subcribe to our newsletter and stay up to date with the latest
-              news and offers.
-            </p>
+              <input
+                class="text-gray-700 bg-gray-100 p-2 w-full border rounded-t hover:border-gray-600"
+                placeholder="Enter your email"
+                type="email"
+              />
 
-            <input
-              class="text-gray-700 bg-gray-100 p-2 w-full border rounded-t hover:border-gray-600"
-              placeholder="Enter your email"
-              type="email"
-            />
+              <button
+                class="px-4 py-2 bg-indigo-600 text-white rounded-b w-full hover:bg-indigo-800"
+              >
+                Subscribe
+              </button>
+            </div>
 
-            <button
-              class="px-4 py-2 bg-indigo-600 text-white rounded-b w-full hover:bg-indigo-800"
-            >
-              Subscribe
-            </button>
+            <!-- divider -->
+            <div class="border px-8"></div>
+
+            <!-- topics -->
+            <div class="my-5 px-2">
+              <h5 class="font-bold uppercase text-lg text-gray-700 mb-2">
+                Popular topics
+              </h5>
+              <ul>
+                <li
+                  class="px-2 py-4 border-y border-white hover:border-gray-300"
+                >
+                  <a class="flex items-center text-gray-600" href="#">
+                    <span
+                      class="inline-block h-4 w-4 mr-4 bg-gradient-to-tr from-green-500 to-green-700"
+                    ></span>
+                    Vue
+                    <span class="text-gray-500 ml-auto">23 articles</span>
+                  </a>
+                </li>
+
+                <li
+                  class="px-2 py-4 border-y border-white hover:border-gray-300"
+                >
+                  <a class="flex items-center text-gray-600" href="#">
+                    <span
+                      class="inline-block h-4 w-4 mr-4 bg-gradient-to-tr from-blue-700 to-blue-900"
+                    ></span>
+                    React
+                    <span class="text-gray-500 ml-auto">41 articles</span>
+                  </a>
+                </li>
+
+                <li
+                  class="px-2 py-4 border-y border-white hover:border-gray-300"
+                >
+                  <a class="flex items-center text-gray-600" href="#">
+                    <span
+                      class="inline-block h-4 w-4 mr-4 bg-gradient-to-tr from-black to-white"
+                    ></span>
+                    NextJS
+                    <span class="text-gray-500 ml-auto">17 articles</span>
+                  </a>
+                </li>
+
+                <li
+                  class="px-2 py-4 border-y border-white hover:border-gray-300"
+                >
+                  <a class="flex items-center text-gray-600" href="#">
+                    <span
+                      class="inline-block h-4 w-4 mr-4 bg-gradient-to-tr from-blue-300 to-blue-600"
+                    ></span>
+                    Typescript
+                    <span class="text-gray-500 ml-auto">59 articles</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 
