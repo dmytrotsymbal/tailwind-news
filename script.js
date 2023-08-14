@@ -12,10 +12,10 @@ async function fetchPosts() {
   const section = document.getElementById("newsSection");
 
   // Создаем цикл для перебора постов и создания HTML-разметки
-  posts.slice(0, 3).forEach((post) => {
+  posts.slice(2, 5).forEach((post) => {
     // Создаем элементы HTML для каждого поста
     const link = document.createElement("a");
-    link.classList.add("block", "mb-10");
+    link.classList.add("block", "mx-3");
     link.href = "#";
 
     const flexDiv = document.createElement("div");
@@ -25,11 +25,12 @@ async function fetchPosts() {
 
     const title = document.createElement("h3");
     title.classList.add(
+      "text-3xl",
       "mt-3",
-      "mb-2",
+      "mb-1",
       "text-gray-700",
       "font-bold",
-      "text-2xl"
+      "capitalize"
     );
     title.textContent = post.title;
 
