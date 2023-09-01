@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,7 @@
     <title>Tailwind News</title>
   </head>
 
-  <body>
+  <body class="bg-white dark:bg-slate-500">
     <div class="max-w-screen-xl mx-auto">
       <!-- header -->
       <header class="px-2 border-b flex justify-between items-center h-14">
@@ -34,7 +34,7 @@
               <button class="header-btn">Log in</button>
             </li>
             <li>
-              <button class="header-btn">Sign up</button>
+              <button class="header-btn">Register</button>
             </li>
           </ul>
         </nav>
@@ -60,7 +60,10 @@
         <!-- breadcrumbs -->
         <div class="px-2 mt-3">
           <div class="overflow-y-auto whitespace-nowrap flex items-center">
-            <a class="text-gray-600 hover:text-gray-900" href="#">
+            <a
+              class="text-gray-600 hover:text-gray-900 transition-all duration-300"
+              href="#"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -92,7 +95,11 @@
                 />
               </svg>
             </span>
-            <a class="text-gray-600 hover:text-gray-900" href="#">News</a>
+            <a
+              class="text-gray-600 hover:text-gray-900 transition-all duration-300"
+              href="#"
+              >News</a
+            >
             <span class="mx-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +116,11 @@
                 />
               </svg>
             </span>
-            <a class="text-gray-600 hover:text-gray-900" href="#">Tech</a>
+            <a
+              class="text-gray-600 hover:text-gray-900 transition-all duration-300"
+              href="#"
+              >Tech</a
+            >
           </div>
         </div>
 
