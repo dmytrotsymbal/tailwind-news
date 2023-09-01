@@ -12,7 +12,7 @@ async function fetchPosts() {
   const section = document.getElementById("newsSection");
 
   // Создаем цикл для перебора постов и создания HTML-разметки
-  posts.slice(0, 5).forEach((post) => {
+  posts.slice(0, 6).forEach((post) => {
     // Создаем элементы HTML для каждого поста
     const link = document.createElement("a");
     link.classList.add("block", "mx-2");
@@ -25,6 +25,7 @@ async function fetchPosts() {
 
     const title = document.createElement("h2");
     title.classList.add(
+      "dark:text-slate-200",
       "text-3xl",
       "mt-3",
       "mb-1",
@@ -35,7 +36,7 @@ async function fetchPosts() {
     title.textContent = post.title;
 
     const description = document.createElement("p");
-    description.classList.add("text-gray-700");
+    description.classList.add("dark:text-slate-400", "text-gray-700");
     description.textContent = post.body;
 
     // Собираем элементы вместе
@@ -52,3 +53,12 @@ async function fetchPosts() {
 
 // Вызываем функцию для получения и вывода постов
 fetchPosts();
+
+//--------------------------------------------------------------------------
+
+let htmlTag = document.getElementsByTagName("html")[0];
+let darkModeBtn = document.getElementById("darkModeBtn");
+
+darkModeBtn.addEventListener("click", () => {
+  htmlTag.classList.toggle("dark");
+});
