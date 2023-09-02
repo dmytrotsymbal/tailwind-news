@@ -60,5 +60,25 @@ let htmlTag = document.getElementsByTagName("html")[0];
 let darkModeBtn = document.getElementById("darkModeBtn");
 
 darkModeBtn.addEventListener("click", () => {
-  htmlTag.classList.toggle("dark");
+  if (htmlTag.classList.contains("dark")) {
+    htmlTag.classList.remove("dark");
+    darkModeBtn.innerHTML = "☀️";
+  } else {
+    htmlTag.classList.add("dark");
+    darkModeBtn.innerHTML = "🌙";
+  }
+});
+
+//----------------------------------------------------------------------------
+
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+const closeMenuBtn = document.getElementById("closeMenuBtn");
+
+menuBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("hidden");
+});
+
+closeMenuBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("hidden");
 });
