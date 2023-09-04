@@ -49,7 +49,9 @@
             </li>
           </ul>
         </nav>
-        <button id="menuBtn" class="inline-block md:hidden">
+
+        <!-- mobileButton -->
+        <button id="menuBtn" class="inline-block md:hidden dark:text-gray-200">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -66,12 +68,37 @@
           </svg>
         </button>
 
+        <!-- mobileMenu -->
         <div
-          class="absolute top-0 overflow-y-auto transition-all duration-300 ease-in-out right-0 w-56 h-full z-40 bg-white border-l-2 border-black hidden"
+          class="dark:bg-slate-900 dark:text-gray-200 absolute top-0 overflow-y-auto transition-all duration-300 ease-in-out right-0 w-56 h-screen z-40 bg-white hidden"
           id="mobileMenu"
         >
-          <div class="mobileMenuUpper">
-            <button id="closeMenuBtn">Close</button>
+          <div
+            class="mobileMenuUpper dark:bg-slate-800 dark:text-gray-200 flex justify-between flex-row-reverse items-center h-14 px-2 bg-slate-100"
+          >
+            <button id="closeMenuBtn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+
+            <button
+              id="darkModeBtnMobile"
+              class="dark:text-gray-200 rounded-md flex justify-center items-center"
+            >
+              ☀️
+            </button>
           </div>
 
           <ul class="text-gray-500 font-semibold flex flex-col mr-6">
@@ -85,6 +112,17 @@
               <a class="header_link" href="#">Contact</a>
             </li>
           </ul>
+          <div class="border border-dotted"></div>
+
+          <ul class="my-4 flex flex-row justify-around items-center">
+            <li>
+              <button class="header-btn">Log in</button>
+            </li>
+            <li>
+              <button class="header-btn">Sign up</button>
+            </li>
+          </ul>
+          <div class="border border-dotted"></div>
         </div>
       </header>
 

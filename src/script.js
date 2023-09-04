@@ -58,6 +58,7 @@ fetchPosts();
 
 let htmlTag = document.getElementsByTagName("html")[0];
 let darkModeBtn = document.getElementById("darkModeBtn");
+let darkModeBtnMobile = document.getElementById("darkModeBtnMobile");
 
 darkModeBtn.addEventListener("click", () => {
   if (htmlTag.classList.contains("dark")) {
@@ -66,6 +67,16 @@ darkModeBtn.addEventListener("click", () => {
   } else {
     htmlTag.classList.add("dark");
     darkModeBtn.innerHTML = "🌙";
+  }
+});
+
+darkModeBtnMobile.addEventListener("click", () => {
+  if (htmlTag.classList.contains("dark")) {
+    htmlTag.classList.remove("dark");
+    darkModeBtnMobile.innerHTML = "☀️";
+  } else {
+    htmlTag.classList.add("dark");
+    darkModeBtnMobile.innerHTML = "🌙";
   }
 });
 
