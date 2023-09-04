@@ -93,3 +93,25 @@ menuBtn.addEventListener("click", () => {
 closeMenuBtn.addEventListener("click", () => {
   mobileMenu.classList.toggle("hidden");
 });
+
+//----------------------------------------------------------------------------
+
+let loginBtn = document.getElementById("loginBtn");
+let loginBtnMobile = document.getElementById("loginBtnMobile");
+let loginModal = document.getElementById("loginModal");
+
+loginBtn.addEventListener("click", () => {
+  loginModal.classList.toggle("hidden");
+});
+
+loginBtnMobile.addEventListener("click", () => {
+  loginModal.classList.toggle("hidden");
+});
+
+loginModal.addEventListener("click", (e) => {
+  if (e.target === loginModal) {
+    loginModal.classList.toggle("hidden");
+  }
+});
+
+//----------------------------------------------------------------------------
