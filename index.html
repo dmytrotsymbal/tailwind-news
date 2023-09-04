@@ -309,12 +309,14 @@
                 </p>
 
                 <input
+                  id="subscribeInput"
                   class="text-gray-700 bg-gray-100 p-2 w-full border rounded-t hover:border-gray-600"
                   placeholder="Enter your email"
                   type="email"
                 />
 
                 <button
+                  id="subscribeButton"
                   class="px-4 py-2 bg-indigo-600 text-white rounded-b w-full hover:bg-indigo-800"
                 >
                   Subscribe
@@ -503,6 +505,7 @@
       </footer>
     </div>
 
+    <!-- log in popup -->
     <div
       id="loginModal"
       class="hidden fixed inset-0 items-center justify-center bg-gray-500 bg-opacity-50 backdrop-filter backdrop-blur z-50"
@@ -546,6 +549,18 @@
             Submit
           </button>
         </form>
+      </div>
+    </div>
+
+    <!-- subscribe popup -->
+    <div
+      id="subscribePopup"
+      class="hidden fixed top-0 left-0 w-full h-full items-center justify-center bg-gray-500 bg-opacity-50 backdrop-filter backdrop-blur z-50"
+    >
+      <div
+        class="dark:bg-slate-900 dark:text-gray-200 w-72 bg-white p-4 rounded shadow ml-auto mr-auto mt-40"
+      >
+        <p id="subscribePopupMessage">Операция успешна! Спасибо.</p>
       </div>
     </div>
 

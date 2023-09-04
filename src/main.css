@@ -17,3 +17,9 @@
 .footer_link {
   @apply dark:text-slate-400 inline-block text-gray-500 py-2 hover:underline decoration-gray-700 underline-offset-2;
 }
+
+.disabled-button {
+  background-color: #04694c;
+  color: #ffffff;
+  cursor: not-allowed;
+}

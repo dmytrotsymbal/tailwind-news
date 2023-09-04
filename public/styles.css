@@ -566,14 +566,6 @@ video {
   top: 0px;
 }
 
-.left-auto {
-  left: auto;
-}
-
-.right-auto {
-  right: auto;
-}
-
 .z-0 {
   z-index: 0;
 }
@@ -650,6 +642,10 @@ video {
   margin-right: 1.5rem;
 }
 
+.mr-auto {
+  margin-right: auto;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -670,16 +666,8 @@ video {
   margin-top: 1rem;
 }
 
-.mr-auto {
-  margin-right: auto;
-}
-
-.mb-auto {
-  margin-bottom: auto;
-}
-
-.mt-auto {
-  margin-top: auto;
+.mt-40 {
+  margin-top: 10rem;
 }
 
 .block {
@@ -917,6 +905,11 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-gray-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
@@ -1138,6 +1131,12 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .backdrop-blur {
   --tw-backdrop-blur: blur(8px);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
@@ -1284,6 +1283,12 @@ video {
 :is(.dark .footer_link) {
   --tw-text-opacity: 1;
   color: rgb(148 163 184 / var(--tw-text-opacity));
+}
+
+.disabled-button {
+  background-color: #04694c;
+  color: #ffffff;
+  cursor: not-allowed;
 }
 
 .hover\:border-gray-300:hover {

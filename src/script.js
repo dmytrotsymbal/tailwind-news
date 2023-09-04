@@ -115,3 +115,39 @@ loginModal.addEventListener("click", (e) => {
 });
 
 //----------------------------------------------------------------------------
+
+let subscribeInput = document.getElementById("subscribeInput");
+let subscribeButton = document.getElementById("subscribeButton");
+let subscribePopup = document.getElementById("subscribePopup");
+
+subscribeButton.addEventListener("click", () => {
+  const email = subscribeInput.value;
+
+  fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      //ответ от бекенда
+      console.log(data);
+
+      // изменение классов кнопки после получения ответа
+      subscribeButton.classList.remove("bg-indigo-600", "hover:bg-indigo-800");
+      subscribeButton.classList.add("disabled-button");
+      subscribeButton.textContent = "Thank you for subscribing! 🎉";
+      subscribeButton.disabled = true;
+      subscribePopup.classList.remove("hidden");
+
+      setTimeout(() => {
+        subscribePopup.classList.add("hidden");
+      }, 2000);
+    })
+    .catch((error) => {
+      //ошибка от бекенда
+      console.error(error);
+    });
+});
