@@ -43,3 +43,9 @@
   display: flex;
   font-style: italic;
 }
+
+@media screen and (max-width: 768px) {
+  .newsCard {
+    flex-direction: column;
+  }
+}
