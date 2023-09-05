@@ -1,15 +1,18 @@
+// apiKeys for fetching  1) const apiKey = "1d3a0eefa97b499d8fbc4ee93eeb40b7";
+//                       2) const apiKey = "9e9b7d1c2042476586e5d3584b6e7cab";
+
 let pageNumber = 1;
-const apiKey = "9e9b7d1c2042476586e5d3584b6e7cab";
+// const apiKey = "9e9b7d1c2042476586e5d3584b6e7cab";
+const apiKey = "1d3a0eefa97b499d8fbc4ee93eeb40b7";
 const pageSize = 5;
 let topic = "general";
 
-let apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&category=${topic}&pageSize=${pageSize}&page=${pageNumber}&apiKey=${apiKey}`;
+let apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&page=${pageNumber}&apiKey=${apiKey}`;
 
 const paginationNext = document.getElementById("paginationNext");
 const paginationPrev = document.getElementById("paginationPrev");
 
 let categoryTopic = document.querySelectorAll(".categoryTopic");
-
 categoryTopic.forEach((element) => {
   element.addEventListener("click", (e) => {
     topic = e.target.dataset.category;
@@ -18,8 +21,26 @@ categoryTopic.forEach((element) => {
   });
 });
 
+let paginationElements = document.querySelectorAll(".pagination-element");
+
+paginationElements.forEach((element) => {
+  element.addEventListener("click", (e) => {
+    // Знімаємо клас "active" з усіх елементів
+    paginationElements.forEach((el) => {
+      el.classList.remove("active");
+    });
+
+    pageNumber = e.target.dataset.page;
+    updateApiUrl();
+    fetchNews();
+
+    // Додаємо клас "active" до активної кнопки
+    e.target.classList.add("active");
+  });
+});
+
 function updateApiUrl() {
-  apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&category=${topic}&pageSize=${pageSize}&page=${pageNumber}&apiKey=${apiKey}`;
+  apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&page=${pageNumber}&apiKey=${apiKey}`;
 }
 
 async function fetchNews() {
@@ -68,12 +89,6 @@ paginationPrev.addEventListener("click", () => {
 });
 
 //--------------------------------------------------------------------------
-
-sportTopic.addEventListener("click", () => {
-  topic = "sport";
-  updateApiUrl();
-  fetchNews();
-});
 
 let htmlTag = document.getElementsByTagName("html")[0];
 let darkModeBtn = document.getElementById("darkModeBtn");
