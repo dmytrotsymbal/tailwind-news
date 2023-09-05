@@ -1,41 +1,58 @@
+let pageNumber = 1;
 const apiKey = "9e9b7d1c2042476586e5d3584b6e7cab";
-const apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&apiKey=${apiKey}`;
+const pageSize = 5;
+let apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&pageSize=${pageSize}&page=${pageNumber}&apiKey=${apiKey}`;
+const paginationNext = document.getElementById("paginationNext");
+const paginationPrev = document.getElementById("paginationPrev");
 
-// Асинхронна функція для отримання та відображення новин
+function updateApiUrl() {
+  apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&pageSize=${pageSize}&page=${pageNumber}&apiKey=${apiKey}`;
+}
+
 async function fetchNews() {
   const res = await fetch(apiUrl);
   const data = await res.json();
-
   const news = data.articles;
   const newsSection = document.getElementById("newsSection");
   newsSection.innerHTML = "";
 
-  // Використовуємо HTML-розмітку без окремої функції
   news.forEach((article) => {
     newsSection.innerHTML += `
       <a href="${article.url}" target="_blank" class="block mx-2">
-          <div class="newsCard">
-            <div class="left">
-              <img class="cardImg" src="${article.urlToImage}" alt="News Image">
-            </div>
-
-            <div class="right">
-              <h2 class="cardTitle">
-              ${article.title}
-              </h2>
-              <p class="cardParagraph">${article.description}</p>
-              <p class="cardDate">${new Date(
-                article.publishedAt
-              ).toLocaleString()}</p>
-            </div>
+        <div class="newsCard">
+          <div class="left">
+            <img class="cardImg" src="${article.urlToImage}" alt="News Image">
           </div>
+          <div class="right">
+            <h2 class="cardTitle dark:text-gray-200">${article.title}</h2>
+            <p class="dark:text-gray-400 cardParagraph">${
+              article.description
+            }</p>
+            <p class="dark:text-gray-400 cardDate">${new Date(
+              article.publishedAt
+            ).toLocaleString()}</p>
+          </div>
+        </div>
       </a>
     `;
   });
 }
 
-// Викликаємо функцію для отримання і відображення новин
 fetchNews();
+
+//--------------------------------------------------------------------------
+
+paginationNext.addEventListener("click", () => {
+  pageNumber++;
+  updateApiUrl();
+  fetchNews();
+});
+
+paginationPrev.addEventListener("click", () => {
+  pageNumber--;
+  updateApiUrl();
+  fetchNews();
+});
 
 //--------------------------------------------------------------------------
 
