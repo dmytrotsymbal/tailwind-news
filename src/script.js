@@ -1,12 +1,25 @@
 let pageNumber = 1;
 const apiKey = "9e9b7d1c2042476586e5d3584b6e7cab";
 const pageSize = 5;
-let apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&pageSize=${pageSize}&page=${pageNumber}&apiKey=${apiKey}`;
+let topic = "general";
+
+let apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&category=${topic}&pageSize=${pageSize}&page=${pageNumber}&apiKey=${apiKey}`;
+
 const paginationNext = document.getElementById("paginationNext");
 const paginationPrev = document.getElementById("paginationPrev");
 
+let categoryTopic = document.querySelectorAll(".categoryTopic");
+
+categoryTopic.forEach((element) => {
+  element.addEventListener("click", (e) => {
+    topic = e.target.dataset.category;
+    updateApiUrl();
+    fetchNews();
+  });
+});
+
 function updateApiUrl() {
-  apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&pageSize=${pageSize}&page=${pageNumber}&apiKey=${apiKey}`;
+  apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&category=${topic}&pageSize=${pageSize}&page=${pageNumber}&apiKey=${apiKey}`;
 }
 
 async function fetchNews() {
@@ -55,6 +68,12 @@ paginationPrev.addEventListener("click", () => {
 });
 
 //--------------------------------------------------------------------------
+
+sportTopic.addEventListener("click", () => {
+  topic = "sport";
+  updateApiUrl();
+  fetchNews();
+});
 
 let htmlTag = document.getElementsByTagName("html")[0];
 let darkModeBtn = document.getElementById("darkModeBtn");
