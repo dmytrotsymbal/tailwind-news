@@ -1,0 +1,29 @@
+.cardLink {
+  text-decoration: none;
+}
+
+.newsCard {
+  border: 1px solid #1860f1;
+  margin: 10px 0;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  width: 400px;
+  margin-right: 20px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+}
+
+.cardTitle {
+  font-size: 20px;
+}
