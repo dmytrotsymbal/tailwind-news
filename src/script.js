@@ -11,7 +11,9 @@ let apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&page=${pageNumber}
 
 const paginationNext = document.getElementById("paginationNext");
 const paginationPrev = document.getElementById("paginationPrev");
+let paginationElements = document.querySelectorAll(".pagination-element");
 
+// topics buttons
 let categoryTopic = document.querySelectorAll(".categoryTopic");
 categoryTopic.forEach((element) => {
   element.addEventListener("click", (e) => {
@@ -21,7 +23,19 @@ categoryTopic.forEach((element) => {
   });
 });
 
-let paginationElements = document.querySelectorAll(".pagination-element");
+// pagination buttons
+
+// Оголошуємо функцію для оновлення стану кнопок пагінації
+function updatePaginationButtons() {
+  // Знімаємо клас "active" з усіх елементів
+  paginationElements.forEach((el) => {
+    el.classList.remove("active");
+  });
+
+  // Задаємо активну кнопку на основі поточної сторінки
+  const activePaginationButton = paginationElements[pageNumber - 1];
+  activePaginationButton.classList.add("active");
+}
 
 paginationElements.forEach((element) => {
   element.addEventListener("click", (e) => {
@@ -39,10 +53,12 @@ paginationElements.forEach((element) => {
   });
 });
 
+// update api url after changing ui
 function updateApiUrl() {
   apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&page=${pageNumber}&apiKey=${apiKey}`;
 }
 
+// main fetching
 async function fetchNews() {
   const res = await fetch(apiUrl);
   const data = await res.json();
@@ -80,12 +96,14 @@ paginationNext.addEventListener("click", () => {
   pageNumber++;
   updateApiUrl();
   fetchNews();
+  updatePaginationButtons();
 });
 
 paginationPrev.addEventListener("click", () => {
   pageNumber--;
   updateApiUrl();
   fetchNews();
+  updatePaginationButtons();
 });
 
 //--------------------------------------------------------------------------
