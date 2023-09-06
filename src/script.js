@@ -1,20 +1,18 @@
 // apiKeys for fetching  1) const apiKey = "1d3a0eefa97b499d8fbc4ee93eeb40b7";
 //                       2) const apiKey = "9e9b7d1c2042476586e5d3584b6e7cab";
 
-let pageNumber = 1;
-// const apiKey = "9e9b7d1c2042476586e5d3584b6e7cab";
 const apiKey = "1d3a0eefa97b499d8fbc4ee93eeb40b7";
 const pageSize = 5;
+let pageNumber = 1;
 let topic = "general";
-
-let apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&page=${pageNumber}&apiKey=${apiKey}`;
+let apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&apiKey=${apiKey}`;
 
 const paginationNext = document.getElementById("paginationNext");
 const paginationPrev = document.getElementById("paginationPrev");
 let paginationElements = document.querySelectorAll(".pagination-element");
+let categoryTopic = document.querySelectorAll(".categoryTopic");
 
 // topics buttons
-let categoryTopic = document.querySelectorAll(".categoryTopic");
 categoryTopic.forEach((element) => {
   element.addEventListener("click", (e) => {
     topic = e.target.dataset.category;
@@ -23,9 +21,7 @@ categoryTopic.forEach((element) => {
   });
 });
 
-// pagination buttons
-
-// Оголошуємо функцію для оновлення стану кнопок пагінації
+// update pagination buttons
 function updatePaginationButtons() {
   // Знімаємо клас "active" з усіх елементів
   paginationElements.forEach((el) => {
@@ -37,25 +33,19 @@ function updatePaginationButtons() {
   activePaginationButton.classList.add("active");
 }
 
+// Один обробник події для всіх кнопок пагінації
 paginationElements.forEach((element) => {
   element.addEventListener("click", (e) => {
-    // Знімаємо клас "active" з усіх елементів
-    paginationElements.forEach((el) => {
-      el.classList.remove("active");
-    });
-
     pageNumber = e.target.dataset.page;
     updateApiUrl();
     fetchNews();
-
-    // Додаємо клас "active" до активної кнопки
-    e.target.classList.add("active");
+    updatePaginationButtons(); // Оновлюємо кнопки пагінації
   });
 });
 
 // update api url after changing ui
 function updateApiUrl() {
-  apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&page=${pageNumber}&apiKey=${apiKey}`;
+  apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&apiKey=${apiKey}`;
 }
 
 // main fetching
