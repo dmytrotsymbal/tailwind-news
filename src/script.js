@@ -5,12 +5,14 @@ const apiKey = "1d3a0eefa97b499d8fbc4ee93eeb40b7";
 const pageSize = 5;
 let pageNumber = 1;
 let topic = "general";
-let apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&apiKey=${apiKey}`;
+let search = "";
+let apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&q=${search}&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&apiKey=${apiKey}`;
 
 const paginationNext = document.getElementById("paginationNext");
 const paginationPrev = document.getElementById("paginationPrev");
 let paginationElements = document.querySelectorAll(".pagination-element");
 let categoryTopic = document.querySelectorAll(".categoryTopic");
+const searchInput = document.getElementById("searchInput");
 
 // topics buttons
 categoryTopic.forEach((element) => {
@@ -43,9 +45,16 @@ paginationElements.forEach((element) => {
   });
 });
 
+// search
+searchInput.addEventListener("input", (e) => {
+  search = e.target.value;
+  updateApiUrl();
+  fetchNews();
+});
+
 // update api url after changing ui
 function updateApiUrl() {
-  apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&apiKey=${apiKey}`;
+  apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&q=${search}&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&apiKey=${apiKey}`;
 }
 
 // main fetching
