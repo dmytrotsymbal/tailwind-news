@@ -12,7 +12,6 @@ let apiUrl = `https://newsapi.org/v2/top-headlines?country=${country}&q=${search
 const paginationNext = document.getElementById("paginationNext");
 const paginationPrev = document.getElementById("paginationPrev");
 let paginationElements = document.querySelectorAll(".pagination-element");
-let newsSection = document.getElementById("newsSection");
 
 const countryButtons = document.querySelectorAll(".countryButton");
 countryButtons.forEach((button) => {
@@ -73,39 +72,33 @@ function updateApiUrl() {
 async function fetchNews() {
   const res = await fetch(apiUrl);
   const data = await res.json();
+  const news = data.articles;
+  const newsSection = document.getElementById("newsSection");
+  newsSection.innerHTML = "";
 
-  if (data.articles) {
-    const news = data.articles;
-    const newsSection = document.getElementById("newsSection");
-    newsSection.innerHTML = "";
-
-    news.forEach((article) => {
-      newsSection.innerHTML += `
-        <a href="${article.url}" target="_blank" class="block mx-2">
-          <div class="newsCard">
-            <div class="left">
-              <img class="cardImg" src="${article.urlToImage}" alt="News Image">
-            </div>
-            <div class="right">
-              <h2 class="cardTitle dark:text-gray-200">${article.title}</h2>
-              <p class="dark:text-gray-400 cardParagraph">${
-                article.description
-              }</p>
-              <p class="dark:text-gray-400 cardDate">${new Date(
-                article.publishedAt
-              ).toLocaleString()}</p>
-            </div>
+  news.forEach((article) => {
+    newsSection.innerHTML += `
+      <a href="${article.url}" target="_blank" class="block mx-2">
+        <div class="newsCard">
+          <div class="left">
+            <img class="cardImg" src="${article.urlToImage}" alt="News Image">
           </div>
-        </a>
-      `;
-    });
-  } else {
-    console.error("API response does not contain 'articles'.");
-  }
+          <div class="right">
+            <h2 class="cardTitle dark:text-gray-200">${article.title}</h2>
+            <p class="dark:text-gray-400 cardParagraph">${
+              article.description
+            }</p>
+            <p class="dark:text-gray-400 cardDate">${new Date(
+              article.publishedAt
+            ).toLocaleString()}</p>
+          </div>
+        </div>
+      </a>
+    `;
+  });
 }
 
 fetchNews();
-
 //--------------------------------------------------------------------------
 
 paginationNext.addEventListener("click", () => {
