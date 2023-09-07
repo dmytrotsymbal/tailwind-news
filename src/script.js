@@ -1,7 +1,7 @@
 // apiKeys for fetching  1) const apiKey = "1d3a0eefa97b499d8fbc4ee93eeb40b7";
 //                       2) const apiKey = "9e9b7d1c2042476586e5d3584b6e7cab";
 
-const apiKey = "9e9b7d1c2042476586e5d3584b6e7cab";
+const apiKey = "935bbfb795024138849e9998615b873a";
 const pageSize = 5;
 let pageNumber = 1;
 let topic = "general";
