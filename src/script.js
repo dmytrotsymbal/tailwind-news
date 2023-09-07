@@ -73,30 +73,35 @@ function updateApiUrl() {
 async function fetchNews() {
   const res = await fetch(apiUrl);
   const data = await res.json();
-  const news = data.articles;
-  const newsSection = document.getElementById("newsSection");
-  newsSection.innerHTML = "";
 
-  news.forEach((article) => {
-    newsSection.innerHTML += `
-      <a href="${article.url}" target="_blank" class="block mx-2">
-        <div class="newsCard">
-          <div class="left">
-            <img class="cardImg" src="${article.urlToImage}" alt="News Image">
+  if (data.articles) {
+    const news = data.articles;
+    const newsSection = document.getElementById("newsSection");
+    newsSection.innerHTML = "";
+
+    news.forEach((article) => {
+      newsSection.innerHTML += `
+        <a href="${article.url}" target="_blank" class="block mx-2">
+          <div class="newsCard">
+            <div class="left">
+              <img class="cardImg" src="${article.urlToImage}" alt="News Image">
+            </div>
+            <div class="right">
+              <h2 class="cardTitle dark:text-gray-200">${article.title}</h2>
+              <p class="dark:text-gray-400 cardParagraph">${
+                article.description
+              }</p>
+              <p class="dark:text-gray-400 cardDate">${new Date(
+                article.publishedAt
+              ).toLocaleString()}</p>
+            </div>
           </div>
-          <div class="right">
-            <h2 class="cardTitle dark:text-gray-200">${article.title}</h2>
-            <p class="dark:text-gray-400 cardParagraph">${
-              article.description
-            }</p>
-            <p class="dark:text-gray-400 cardDate">${new Date(
-              article.publishedAt
-            ).toLocaleString()}</p>
-          </div>
-        </div>
-      </a>
-    `;
-  });
+        </a>
+      `;
+    });
+  } else {
+    console.error("API response does not contain 'articles'.");
+  }
 }
 
 fetchNews();
@@ -186,6 +191,12 @@ let subscribePopup = document.getElementById("subscribePopup");
 subscribeButton.addEventListener("click", () => {
   const email = subscribeInput.value;
 
+  // Check if the email input is empty
+  if (!email.trim()) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
   fetch("https://jsonplaceholder.typicode.com/posts", {
     method: "POST",
     headers: {
@@ -195,10 +206,10 @@ subscribeButton.addEventListener("click", () => {
   })
     .then((response) => response.json())
     .then((data) => {
-      //ответ от бекенда
+      // Response from the backend
       console.log(data);
 
-      // изменение классов кнопки после получения ответа
+      // Change button classes after receiving the response
       subscribeButton.classList.remove("bg-indigo-600", "hover:bg-indigo-800");
       subscribeButton.classList.add("disabled-button");
       subscribeButton.textContent = "Thank you for subscribing! 🎉";
@@ -210,7 +221,7 @@ subscribeButton.addEventListener("click", () => {
       }, 2000);
     })
     .catch((error) => {
-      //ошибка от бекенда
+      // Error from the backend
       console.error(error);
     });
 });
