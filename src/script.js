@@ -1,20 +1,31 @@
 // apiKeys for fetching  1) const apiKey = "1d3a0eefa97b499d8fbc4ee93eeb40b7";
 //                       2) const apiKey = "9e9b7d1c2042476586e5d3584b6e7cab";
 
-const apiKey = "1d3a0eefa97b499d8fbc4ee93eeb40b7";
+const apiKey = "9e9b7d1c2042476586e5d3584b6e7cab";
 const pageSize = 5;
 let pageNumber = 1;
 let topic = "general";
 let search = "";
-let apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&q=${search}&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&apiKey=${apiKey}`;
+let country = "ua";
+let apiUrl = `https://newsapi.org/v2/top-headlines?country=${country}&q=${search}&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&apiKey=${apiKey}`;
 
 const paginationNext = document.getElementById("paginationNext");
 const paginationPrev = document.getElementById("paginationPrev");
 let paginationElements = document.querySelectorAll(".pagination-element");
-let categoryTopic = document.querySelectorAll(".categoryTopic");
-const searchInput = document.getElementById("searchInput");
+let newsSection = document.getElementById("newsSection");
+
+const countryButtons = document.querySelectorAll(".countryButton");
+countryButtons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const countryCode = e.currentTarget.getAttribute("data-country");
+    country = countryCode;
+    updateApiUrl();
+    fetchNews();
+  });
+});
 
 // topics buttons
+let categoryTopic = document.querySelectorAll(".categoryTopic");
 categoryTopic.forEach((element) => {
   element.addEventListener("click", (e) => {
     topic = e.target.dataset.category;
@@ -45,7 +56,8 @@ paginationElements.forEach((element) => {
   });
 });
 
-// search
+// search input
+const searchInput = document.getElementById("searchInput");
 searchInput.addEventListener("input", (e) => {
   search = e.target.value;
   updateApiUrl();
@@ -54,7 +66,7 @@ searchInput.addEventListener("input", (e) => {
 
 // update api url after changing ui
 function updateApiUrl() {
-  apiUrl = `https://newsapi.org/v2/top-headlines?country=ua&q=${search}&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&apiKey=${apiKey}`;
+  apiUrl = `https://newsapi.org/v2/top-headlines?country=${country}&q=${search}&page=${pageNumber}&category=${topic}&pageSize=${pageSize}&apiKey=${apiKey}`;
 }
 
 // main fetching
